@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header">
+<head th:replace="partials/head :: head('Roll Dice')">
     <meta charset="UTF-8">
     <title>Roll Dice</title>
 </head>
@@ -28,6 +28,7 @@
 
 
 
+<th:block th:include="partials/scripts :: scripts"></th:block>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
