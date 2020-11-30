@@ -20,13 +20,12 @@
 
     </ul>
 
-    <p>Guess a number: <span th:text="${userGuess}"></span></p>
-    <p>Random #: <span th:text="${random}"></span></p>
+    <h2>Guess a number: <span th:text="${userGuess}"></span></h2>
+    <h2>Random #: <span th:text="${random}"></span></h2>
+    <br>
+    <h3 th:if="${correctGuess}">Good Job! You guessed correctly.</h3>
+    <h3 th:if="${correctGuess != null && !correctGuess}">Wrong guess try again</h3>
 
-    <div>
-    <p th:if="${correctGuess}">Good Job! You guessed correctly.</p>
-    <p th:if="${correctGuess != null && !correctGuess}">Wrong guess try again</p>
-    </div>
 
 
 <footer th:replace="partials/footer :: footer"></footer>
