@@ -17,8 +17,8 @@
 
     </ul>
 
-    <p>Guess a number: <span th:text="${userGuess}">GUESS TEST</span></p>
-    <p>Random #: <span th:text="${random}">RANDOM # TEST</span></p>
+    <p>Guess a number: <span th:text="${userGuess}"></span></p>
+    <p>Random #: <span th:text="${random}"></span></p>
 
     <p th:if="${correctGuess}">Good Job! You guessed correctly.</p>
     <p th:if="${correctGuess != null && !correctGuess}">Wrong guess try again</p>

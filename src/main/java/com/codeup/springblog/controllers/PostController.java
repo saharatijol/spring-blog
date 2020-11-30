@@ -1,18 +1,23 @@
 package com.codeup.springblog.controllers;
 
+import com.codeup.springblog.Post;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @Controller
 public class PostController {
 
-    @GetMapping("/posts")
-    @ResponseBody
-    public String postsIndex() {
-        return "Posts index page";
+    @RequestMapping(value="/posts", method = RequestMethod.GET)
+        public String postsIndex(Model model) {
+        ArrayList<Post> posts = new ArrayList<>();
+        posts.add(new Post("Do you see this? 1", "test 1"));
+        posts.add(new Post("Do you see this? 2", "test 2"));
+        posts.add(new Post("Do you see this? 3", "test 3"));
+        model.addAttribute("postsIndex", posts);
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
