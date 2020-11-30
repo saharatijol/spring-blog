@@ -21,9 +21,10 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String show(@PathVariable long id) {
-        return "View individual post with an id: " + id;
+    public String show(@PathVariable long id, Model model) {
+        Post post = new Post("First blog post title", "Here is the blog post body");
+        model.addAttribute("post", post);
+        return "posts/show";
     }
 
     // GET request
