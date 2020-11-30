@@ -1,6 +1,6 @@
 package com.codeup.springblog.controllers;
 
-import com.codeup.springblog.Post;
+import com.codeup.springblog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,6 @@ public class PostController {
         ArrayList<Post> posts = new ArrayList<>();
         posts.add(new Post("Do you see this? 1", "test 1"));
         posts.add(new Post("Do you see this? 2", "test 2"));
-        posts.add(new Post("Do you see this? 3", "test 3"));
         model.addAttribute("postsIndex", posts);
         return "posts/index";
     }

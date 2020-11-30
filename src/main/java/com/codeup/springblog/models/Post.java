@@ -1,4 +1,4 @@
-package com.codeup.springblog;
+package com.codeup.springblog.models;
 
 public class Post {
     private String title;
@@ -7,7 +7,6 @@ public class Post {
     public Post() {
 
     }
-
 
     public Post(String title, String body) {
         this.title = title;
