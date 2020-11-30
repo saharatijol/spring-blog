@@ -7,8 +7,8 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-
     <h1>Dice Roll</h1>
+
     <h2>Pick a number</h2>
     <ul>
         <li><a href="/roll-dice/1">1</a></li>
@@ -23,8 +23,10 @@
     <p>Guess a number: <span th:text="${userGuess}"></span></p>
     <p>Random #: <span th:text="${random}"></span></p>
 
+    <div>
     <p th:if="${correctGuess}">Good Job! You guessed correctly.</p>
     <p th:if="${correctGuess != null && !correctGuess}">Wrong guess try again</p>
+    </div>
 
 
 <footer th:replace="partials/footer :: footer"></footer>
