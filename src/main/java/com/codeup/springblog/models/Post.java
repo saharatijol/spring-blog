@@ -1,11 +1,27 @@
 package com.codeup.springblog.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // what is GenerationType.AUTO??
+    private long id;
+
+    @Column(nullable = false, length = 100)
     private String title;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
     public Post() {
 
+    }
+
+    public Post (long id, String title, String body) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
     }
 
     public Post(String title, String body) {
@@ -27,5 +43,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
