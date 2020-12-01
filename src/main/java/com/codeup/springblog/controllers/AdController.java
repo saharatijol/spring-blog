@@ -34,15 +34,17 @@ public class AdController {
 
     // GET request
     @GetMapping("/ads/create")
-    @ResponseBody
     public String showCreateForm() {
-        return "View the form for creating a post";
+        return "ads/new";
     }
     // POST request
     @PostMapping("/ads/create")
     @ResponseBody
-    public String createAd() {
-        Ad ad = new Ad("title", "ps5");
+    public String createAd(
+            @RequestParam(name = "title") String title,
+            @RequestParam(name = "description") String desc
+    ) {
+        Ad ad = new Ad(title, desc);
         Ad dbAd = adDao.save(ad); // Ad from the DB
         return "Create a new Ad with the id: " + dbAd.getId();
     }
