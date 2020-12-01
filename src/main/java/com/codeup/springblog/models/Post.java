@@ -18,12 +18,14 @@ public class Post {
 
     }
 
+    // READ or EXTRACT
     public Post (long id, String title, String body) {
         this.id = id;
         this.title = title;
         this.body = body;
     }
 
+    // CREATE NEW
     public Post(String title, String body) {
         this.title = title;
         this.body = body;

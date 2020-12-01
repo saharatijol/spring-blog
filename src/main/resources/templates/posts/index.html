@@ -6,13 +6,20 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<h1>Index Posts</h1>
+<h2>Index Posts</h2>
+<!--<div th:each="post:${postsIndex}">-->
+<!--    <h4 th:text="${post.title}"></h4>-->
+<!--    <p th:text="${post.body}"></p>-->
+<!--</div>-->
 
-<div th:each="post:${postsIndex}">
-    <h2 th:text="${post.title}"></h2>
-    <p th:text="${post.body}"></p>
+<div class="card" th:each="post:${postsIndex}">
+    <h5 class="card-header" th:text="${post.title}"></h5>
+    <div class="card-body">
+        <p class="card-text" th:text="${post.body}"></p>
+        <a href="#" class="btn btn-primary">Edit</a>
+        <a href="#" class="btn btn-danger">Delete</a>
+    </div>
 </div>
-
 
 <th:block th:include="partials/scripts :: scripts"></th:block>
 <footer th:replace="partials/footer :: footer"></footer>
