@@ -6,15 +6,17 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<form>
+
+<form th:action="@{/posts/create}" th:method="post">
     <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control" id="title">
+        <input type="text" class="form-control" id="title" name="title">
     </div>
     <div class="form-group">
         <label for="body">Body</label>
-        <textarea class="form-control" id="body" rows="3"></textarea>
+        <textarea class="form-control" id="body" name="body" rows="3"></textarea>
     </div>
+    <input class="btn btn-primary" type="submit" value="Publish">
 </form>
 
 
