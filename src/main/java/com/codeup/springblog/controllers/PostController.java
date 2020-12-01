@@ -38,13 +38,12 @@ public class PostController {
 
     // POST request
     @PostMapping("/posts/create")
-    @ResponseBody
     public String createNewPost(
             @RequestParam(name = "title") String title,
             @RequestParam(name = "body") String body
     ) {
         Post post = new Post(title, body);
         Post dbPost = postDao.save(post);
-        return "Create a new post with the id: " + dbPost.getId();
+        return "redirect:/posts";
     }
 }
