@@ -8,7 +8,7 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <h2>Index Posts</h2>
 
-<div class="card" th:each="post:${postsIndex}">
+<div class="card mx-2 my-2" th:each="post:${postsIndex}">
     <h5 class="card-header" th:text="${post.title}"></h5>
     <div class="card-body">
         <p class="card-text" th:text="${post.body}"></p>

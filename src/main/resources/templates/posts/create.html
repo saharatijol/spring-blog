@@ -6,9 +6,9 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-
+<main class="container">
 <form th:action="@{/posts/create}" th:method="post">
-    <div class="form-group">
+    <div class="form-group mt-3">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" name="title">
     </div>
@@ -18,7 +18,7 @@
     </div>
     <input class="btn btn-primary" type="submit" value="Publish">
 </form>
-
+</main>
 
 <th:block th:include="partials/scripts :: scripts"></th:block>
 <footer th:replace="partials/footer :: footer"></footer>
