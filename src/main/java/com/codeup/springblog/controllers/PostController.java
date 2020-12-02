@@ -46,4 +46,18 @@ public class PostController {
         Post dbPost = postDao.save(post);
         return "redirect:/posts";
     }
+
+
+    // DELETE
+    @PostMapping("/posts/{id}")
+    public String delete(@RequestParam(name="delete") long id) {
+        System.out.println("id = " + id);
+        postDao.deleteById(id);
+        return "redirect:/posts";
+    }
+
+    // EDIT - GET
+
+    // EDIT - POST
+
 }

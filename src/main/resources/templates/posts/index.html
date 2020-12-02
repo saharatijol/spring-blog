@@ -17,7 +17,12 @@
     <div class="card-body">
         <p class="card-text" th:text="${post.body}"></p>
         <a href="#" class="btn btn-primary">Edit</a>
-        <a href="#" class="btn btn-danger">Delete</a>
+
+        <form action="@{'/posts/' + post.id}" th:method="post">
+<!--            <a href="/delete" class="btn btn-danger" id="delete" name="delete" th:value="post.id">Delete</a>-->
+            <input class="btn btn-danger" type="submit" value="Delete" name="delete" th:value={post.id}>
+        </form>
+
     </div>
 </div>
 
