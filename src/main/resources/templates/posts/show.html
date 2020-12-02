@@ -12,6 +12,7 @@
 <h2 th:text="${post.title}"></h2>
 <p th:text="${post.body}"></p>
 
+<!--Note: Do not forget the slashes in the very beginning.-->
 <form th:action="@{/posts/{id}/delete(id=${post.getId()})}" th:method="post">
     <button class="btn btn-danger">Delete</button>
 </form>

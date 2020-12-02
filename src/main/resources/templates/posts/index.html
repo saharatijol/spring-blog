@@ -12,9 +12,11 @@
     <h5 class="card-header" th:text="${post.title}"></h5>
     <div class="card-body">
         <p class="card-text" th:text="${post.body}"></p>
-        <a href="#" class="btn btn-primary">Edit</a>
 
-        <form th:action="@{posts/{id}/delete(id=${post.getId()})}" th:method="post">
+        <form th:action="@{/posts/{id}/edit(id=${post.getId()})}" th:method="get">
+            <button class="btn btn-primary">Edit</button>
+        </form>
+        <form th:action="@{/posts/{id}/delete(id=${post.getId()})}" th:method="post">
             <button class="btn btn-danger">Delete</button>
         </form>
     </div>

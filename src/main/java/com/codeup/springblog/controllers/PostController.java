@@ -47,8 +47,6 @@ public class PostController {
     }
 
     // DELETE
-    // It works for index but does not work for show.. why?
-    // For return, url comes back as /posts/posts/1/delete
     @PostMapping("/posts/{id}/delete")
     public String deletePost(@PathVariable long id) {
         //System.out.println("id = " + id);
@@ -57,7 +55,23 @@ public class PostController {
     }
 
     // EDIT - GET
+    @GetMapping("/posts/{id}/edit")
+    public String editForm(@PathVariable long id, Model viewModel) {
+        viewModel.addAttribute("post", postDao.getOne(id));
+        return "posts/edit";
+    }
 
     // EDIT - POST
-
+    @PostMapping("/posts/{id}/edit")
+    public String editPost(
+            @PathVariable long id,
+            @RequestParam(name="title") String title,
+            @RequestParam(name="body") String body
+            ){
+        Post dbPost = postDao.getOne(id);
+        dbPost.setTitle(title);
+        dbPost.setBody(body);
+        postDao.save(dbPost);
+        return "redirect:/posts";
+    }
 }
