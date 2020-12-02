@@ -7,10 +7,6 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <h2>Index Posts</h2>
-<!--<div th:each="post:${postsIndex}">-->
-<!--    <h4 th:text="${post.title}"></h4>-->
-<!--    <p th:text="${post.body}"></p>-->
-<!--</div>-->
 
 <div class="card" th:each="post:${postsIndex}">
     <h5 class="card-header" th:text="${post.title}"></h5>
@@ -18,11 +14,9 @@
         <p class="card-text" th:text="${post.body}"></p>
         <a href="#" class="btn btn-primary">Edit</a>
 
-        <form action="@{'/posts/' + post.id}" th:method="post">
-<!--            <a href="/delete" class="btn btn-danger" id="delete" name="delete" th:value="post.id">Delete</a>-->
-            <input class="btn btn-danger" type="submit" value="Delete" name="delete" th:value={post.id}>
+        <form th:action="@{posts/{id}/delete(id=${post.getId()})}" th:method="post">
+            <button class="btn btn-danger">Delete</button>
         </form>
-
     </div>
 </div>
 

@@ -12,6 +12,9 @@
 <h2 th:text="${post.title}"></h2>
 <p th:text="${post.body}"></p>
 
+<form th:action="@{/posts/{id}/delete(id=${post.getId()})}" th:method="post">
+    <button class="btn btn-danger">Delete</button>
+</form>
 
 <th:block th:include="partials/scripts :: scripts"></th:block>
 <footer th:replace="partials/footer :: footer"></footer>

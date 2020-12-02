@@ -24,19 +24,18 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public String show(@PathVariable long id, Model model) {
-        Post post = new Post("First blog post title", "Here is the blog post body");
-        model.addAttribute("post", post);
+    public String show(@PathVariable long id, Model viewModel) {
+        viewModel.addAttribute("post", postDao.getOne(id));
         return "posts/show";
     }
 
-    // GET request
+    // CREATE - GET
     @GetMapping("/posts/create")
     public String showCreateForm() {
         return "posts/create";
     }
 
-    // POST request
+    // CREATE - POST
     @PostMapping("/posts/create")
     public String createNewPost(
             @RequestParam(name = "title") String title,
@@ -47,11 +46,12 @@ public class PostController {
         return "redirect:/posts";
     }
 
-
     // DELETE
-    @PostMapping("/posts/{id}")
-    public String delete(@RequestParam(name="delete") long id) {
-        System.out.println("id = " + id);
+    // It works for index but does not work for show.. why?
+    // For return, url comes back as /posts/posts/1/delete
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable long id) {
+        //System.out.println("id = " + id);
         postDao.deleteById(id);
         return "redirect:/posts";
     }
