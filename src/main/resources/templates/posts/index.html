@@ -9,7 +9,8 @@
 <h2>Index Posts</h2>
 
 <div class="card mx-2 my-2" th:each="post:${postsIndex}">
-    <h5 class="card-header" th:text="${post.title}"></h5>
+
+    <h5 class="card-header"><a th:href="@{/posts/{id}(id=${post.id})}" th:value="${post.id}" th:text="${post.title}"></a></h5>
     <div class="card-body">
         <p class="card-text" th:text="${post.body}"></p>
 
