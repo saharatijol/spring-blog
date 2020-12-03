@@ -9,7 +9,7 @@
 <h2>Index Posts</h2>
 
 <div class="card mx-2 my-2" th:each="post:${postsIndex}">
-
+<!--    Turns out, you don't need a get method form on this one-->
     <h5 class="card-header"><a th:href="@{/posts/{id}(id=${post.id})}" th:value="${post.id}" th:text="${post.title}"></a></h5>
     <div class="card-body">
         <p class="card-text" th:text="${post.body}"></p>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <form th:action="@{/posts/{id}/delete(id=${post.getId()})}" th:method="post">
+                        <form th:action="@{'/posts/' + ${post.id} + '/delete'}" th:method="post">
                             <button class="btn btn-primary">Yes</button>
                         </form>
                     </div>

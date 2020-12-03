@@ -41,7 +41,7 @@ public class PostController {
             @RequestParam(name = "title") String title,
             @RequestParam(name = "body") String body
     ) {
-        Post post = new Post(title, body);
+        Post post = new Post(title, body, null);
         Post dbPost = postDao.save(post);
         return "redirect:/posts";
     }
