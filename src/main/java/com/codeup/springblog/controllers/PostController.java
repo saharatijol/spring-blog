@@ -1,6 +1,7 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.User;
 import com.codeup.springblog.repos.PostRepository;
 import com.codeup.springblog.repos.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -73,6 +74,24 @@ public class PostController {
         dbPost.setTitle(title);
         dbPost.setBody(body);
         postDao.save(dbPost);
+        return "redirect:/posts";
+    }
+
+    // USER SIGN UP - GET
+    @GetMapping("/signup")
+    public String showSignUpForm() {
+        return "users/signup";
+    }
+
+
+    @PostMapping("/signup")
+    public String signUp(
+            @RequestParam(name = "username") String username,
+            @RequestParam(name = "email") String email,
+            @RequestParam(name = "password") String password
+    ) {
+        User user = new User(username, email, password);
+        User dbUser = userDao.save(user);
         return "redirect:/posts";
     }
 }
