@@ -8,14 +8,24 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <h1>Show individual post</h1>
-
-<h2 th:text="${post.title}"></h2>
-<p th:text="${post.body}"></p>
-
-<!--Note: Do not forget the slashes in the very beginning.-->
-<form th:action="@{/posts/{id}/delete(id=${post.getId()})}" th:method="post">
-    <button class="btn btn-danger">Delete</button>
-</form>
+<main class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            View Post
+        </div>
+        <div class="card-body">
+            <h3 class="card-title" th:text="${post.title}"></h3>
+            <p class="card-text" th:text="${post.body}"></p>
+            <a href="/posts" class="btn btn-primary"> Back </a>
+        </div>
+        <div class="card-footer text-muted">
+            <p>Author: <span th:text="${post.getOwner().getUsername()}"></span></p>
+        </div>
+    </div>
+    <!--    Tried to catch null but it doesn't seem to be render correctly-->
+    <!--    <p th:if="${post.getOwner().getUsername() != null }">Created by: <span th:text="${post.getOwner().getUsername()}"></span></p>-->
+    <!--    <p th:if="${post.getOwner().getUsername() == null}">Created by: <span th:text="Unknown"></span></p>-->
+</main>
 
 <th:block th:include="partials/scripts :: scripts"></th:block>
 <footer th:replace="partials/footer :: footer"></footer>
