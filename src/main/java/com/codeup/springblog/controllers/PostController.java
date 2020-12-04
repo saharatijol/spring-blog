@@ -65,9 +65,9 @@ public class PostController {
     // EDIT - POST
     @PostMapping("/posts/{id}/edit")
     public String editPost(@ModelAttribute Post postToEdit){
-        User userDb = userDao.getOne(1L);
+        User userDb = userDao.getOne(1L); // ideally, this will ba a user obj coming from a session
         postToEdit.setOwner(userDb);
-        Post dbPost = postDao.save(postToEdit);
+        postDao.save(postToEdit);
         return "redirect:/posts";
     }
 

@@ -14,8 +14,8 @@
         <input type="text" class="form-control" th:field="*{title}">
     </div>
     <div class="form-group">
-        <label for="body">Body</label>
-        <textarea class="form-control" id="body" rows="4" th:field="*{body}"></textarea>
+        <label th:field="*{body}">Body</label>
+        <textarea class="form-control" rows="4" th:field="*{body}"></textarea>
     </div>
     <input class="btn btn-primary" type="submit" value="Save Changes">
 </form>
