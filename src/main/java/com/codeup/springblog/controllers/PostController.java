@@ -33,19 +33,18 @@ public class PostController {
 
     // CREATE - GET
     @GetMapping("/posts/create")
-    public String showCreateForm() {
+    public String showCreateForm(Model viewModel) {
+        viewModel.addAttribute("post", new Post());
         return "posts/create";
     }
 
     // CREATE - POST
     @PostMapping("/posts/create")
-    public String createNewPost(
-            @RequestParam(name = "title") String title,
-            @RequestParam(name = "body") String body
-    ) {
-        Post post = new Post(title, body, null);
-        Post dbPost = postDao.save(post);
-        return "redirect:/posts";
+    public String createNewPost(@ModelAttribute Post postToBeSaved) {
+        User userDb = userDao.getOne(1L);
+        postToBeSaved.setOwner(userDb);
+        Post dbPost = postDao.save(postToBeSaved);
+        return "redirect:/posts/" + dbPost.getId();
     }
 
     // DELETE
@@ -82,7 +81,6 @@ public class PostController {
     public String showSignUpForm() {
         return "users/signup";
     }
-
 
     @PostMapping("/signup")
     public String signUp(
