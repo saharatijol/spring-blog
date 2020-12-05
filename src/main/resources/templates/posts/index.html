@@ -8,7 +8,7 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <h2>Index Posts</h2>
 <div class="m-5" th:each="post:${postsIndex}">
-<div class="card mx-2 my-2" >
+    <div class="card mx-2 my-2">
 <!--    Turns out, you don't need a get method form on this one BUT writing it this way exposes the id-->
     <h5 class="card-header"><a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a></h5>
     <div class="card-body">
@@ -18,35 +18,13 @@
             <button class="btn btn-primary mb-2">Edit</button>
         </form>
 
-
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".myModal" th:data="${post.id}">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" th:attrappend="data-target=${' ' + post.id}">
             Delete
         </button>
 
         <!-- Modal -->
-<!--        <div class="modal fade" id="exampleModal" tabindex="-1" th:value="${post.id}">-->
-<!--            <div class="modal-dialog">-->
-<!--                <div class="modal-content">-->
-<!--                    <div class="modal-header">-->
-<!--                        <h5 class="modal-title">This will permanently delete <span th:text="${post.title}"></span> post</h5>-->
-<!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                            <span aria-hidden="true">&times;</span>-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                    <div class="modal-footer">-->
-<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close modal</button>-->
-<!--                        <form th:action="@{/posts/{id}/delete(id=${post.id})}" th:method="post">-->
-<!--                            <button type="submit" class="btn btn-primary">Yes, delete anyway</button>-->
-<!--                        </form>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-
-        <!-- Modal -->
-        <div class="modal fade myModal" id="exampleModal" tabindex="-1" role="dialog" th:a>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" th:attrappend="id=${' ' + post.id}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -57,17 +35,16 @@
                     </div>
                     <form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">
                         <div class="modal-body text-left">
-                           <p>Are you Sure?</p>
+                           <p>Are you sure?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete anyway</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
 
     </div>
 </div>
