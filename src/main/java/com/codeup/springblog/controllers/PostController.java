@@ -75,6 +75,9 @@ public class PostController {
         return "redirect:/posts";
     }
 
+
+
+    // THIS MIGHT BE IN THE USER CONTROLLER, JUST WAITING FOR LECTURE
     // USER SIGN UP - GET
     @GetMapping("/signup")
     public String showSignUpForm() {
@@ -90,5 +93,11 @@ public class PostController {
         User user = new User(username, email, password);
         User dbUser = userDao.save(user);
         return "redirect:/posts";
+    }
+
+    // LOGIN - GET
+    @GetMapping("/login")
+    public String showLoginForm() {
+        return "users/login";
     }
 }
