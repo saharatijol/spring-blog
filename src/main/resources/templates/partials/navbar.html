@@ -5,16 +5,13 @@
     <title>Navbar Fragment</title>
 </head>
 <body>
-<nav th:fragment="navbar" class="navbar sticky-top navbar-expand-lg navbar-dark mdb-color mb-2">
-    <a class="navbar-brand" href="/home">Location : Anywhere</a>
+<nav th:fragment="navbar" class="navbar sticky-top navbar-expand-lg navbar-dark special-color-dark">
+    <a class="navbar-brand" href="/home">Location : Anywhere <i class="fas fa-map-marker-alt"></i></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/home">Home</a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/posts">View Posts</a>
             </li>
