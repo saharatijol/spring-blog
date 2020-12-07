@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/head :: head('Sign Up')">
     <meta charset="UTF-8">
     <title>Sign Up</title>
@@ -8,18 +8,20 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <main class="container">
     <h1>Registration form</h1>
-    <form th:action="@{/signup}" th:method="post">
+
+<!--    removed th from method-->
+    <form th:action="@{/signup}" method="post" th:object="${user}">
         <div class="form-group mt-3">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username">
+            <input type="text" class="form-control" id="username" th:field="*{username}"/>
         </div>
         <div class="form-group mt-3">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <input type="email" class="form-control" id="email" th:field="*{email}"/>
         </div>
         <div class="form-group mt-3">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
+            <input type="password" class="form-control" id="password" th:field="*{password}"/>
         </div>
 
         <input class="btn btn-primary" type="submit" value="Sign Up">

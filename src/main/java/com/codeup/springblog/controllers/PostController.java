@@ -5,6 +5,7 @@ import com.codeup.springblog.models.User;
 import com.codeup.springblog.repos.PostRepository;
 import com.codeup.springblog.repos.UserRepository;
 import com.codeup.springblog.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +45,7 @@ public class PostController {
     // CREATE - POST
     @PostMapping("/posts/create")
     public String createNewPost(@ModelAttribute Post postToBeSaved) {
-        User userDb = userDao.getOne(1L);
+        User userDb = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postToBeSaved.setOwner(userDb);
         Post dbPost = postDao.save(postToBeSaved);
         emailService.prepareAndSend(dbPost, "Post has been created", "You can find it with the id of " + dbPost.getId());
@@ -73,31 +74,5 @@ public class PostController {
         postToEdit.setOwner(userDb);
         postDao.save(postToEdit);
         return "redirect:/posts";
-    }
-
-
-
-    // THIS MIGHT BE IN THE USER CONTROLLER, JUST WAITING FOR LECTURE
-    // USER SIGN UP - GET
-    @GetMapping("/signup")
-    public String showSignUpForm() {
-        return "users/signup";
-    }
-
-    @PostMapping("/signup")
-    public String signUp(
-            @RequestParam(name = "username") String username,
-            @RequestParam(name = "email") String email,
-            @RequestParam(name = "password") String password
-    ) {
-        User user = new User(username, email, password);
-        User dbUser = userDao.save(user);
-        return "redirect:/posts";
-    }
-
-    // LOGIN - GET
-    @GetMapping("/login")
-    public String showLoginForm() {
-        return "users/login";
     }
 }
