@@ -21,7 +21,7 @@ public class UserController {
     }
     @GetMapping("/signup")
     public String showSignUpForm(Model model) {
-        model.addAttribute("user", new User());git
+        model.addAttribute("user", new User());
         return "users/signup";
     }
 
