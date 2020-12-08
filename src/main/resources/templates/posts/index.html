@@ -7,50 +7,6 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<!--<div class="m-5" th:each="post:${postsIndex}">-->
-<!--    <div class="card mx-2 my-2">-->
-<!--        &lt;!&ndash;    Turns out, you don't need a get method form on this one BUT writing it this way exposes the id&ndash;&gt;-->
-<!--        <h3 class="card-header"><a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a></h3>-->
-<!--        <div class="card-body">-->
-
-<!--            <p class="card-text" th:text="${post.body}"></p>-->
-
-<!--            <form th:action="@{/posts/{id}/edit(id=${post.id})}" th:method="get">-->
-<!--                <button class="btn btn-primary mb-2">Edit</button>-->
-<!--            </form>-->
-
-<!--            &lt;!&ndash; Button trigger modal &ndash;&gt;-->
-<!--            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"-->
-<!--                    th:attrappend="data-target=${post.id}">-->
-<!--                Delete-->
-<!--            </button>-->
-
-<!--            &lt;!&ndash; Modal &ndash;&gt;-->
-<!--            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" th:attrappend="id=${post.id}">-->
-<!--                <div class="modal-dialog" role="document">-->
-<!--                    <div class="modal-content">-->
-<!--                        <div class="modal-header">-->
-<!--                            <h5 class="modal-title">This will permanently delete <span th:text="${post.title}"></span>-->
-<!--                                post</h5>-->
-<!--                            <button type="button" class="close" data-dismiss="modal">-->
-<!--                                <span>&times;</span>-->
-<!--                            </button>-->
-<!--                        </div>-->
-<!--                        <form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">-->
-<!--                            <div class="modal-body text-left">-->
-<!--                                <p>Are you sure?</p>-->
-<!--                            </div>-->
-<!--                            <div class="modal-footer">-->
-<!--                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>-->
-<!--                                <button type="submit" class="btn btn-danger">Delete anyway</button>-->
-<!--                            </div>-->
-<!--                        </form>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 <div sec:authorize="isAuthenticated()">
     This content is only shown to authenticated users.
 
@@ -59,12 +15,9 @@
     Email: <span th:text="${#authentication.principal.email}"/>
 </div>
 
-
-
-<div class="row-cols-1 row-cols-md-3">
-    <div class="col" th:each="post:${postsIndex}">
-        <!-- Card -->
-        <div class="card" style="display: inline-block">
+<div class="container">
+<div th:each="post:${postsIndex}">
+        <div class="card m-3" style="display: inline-block">
             <!--Card image-->
             <div class="view overlay">
                 <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
@@ -73,24 +26,20 @@
                     <div class="mask rgba-white-slight"></div>
                 </a>
             </div>
-            <!--Card content-->
             <div class="card-body">
-
-                <!--Title-->
                 <h3 class="card-title"><a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a></h3>
-                <!--Text-->
                 <p class="card-text" th:text="${post.body}"></p>
-                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                <form th:action="@{/posts/{id}/edit(id=${post.id})}" th:method="get">
-                    <button class="btn btn-primary mb-2">Edit</button>
-                </form>
+
+                <div class="d-flex">
+                    <form th:action="@{/posts/{id}/edit(id=${post.id})}" th:method="get">
+                        <button class="btn btn-primary mb-2">Edit</button>
+                    </form>
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-                        th:attrappend="data-target=${post.id}">
-                    Delete
-                </button>
-
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" th:attrappend="data-target=${post.id}">
+                        Delete
+                    </button>
+                </div>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" th:attrappend="id=${post.id}">
                     <div class="modal-dialog" role="document">
@@ -118,8 +67,6 @@
         </div>
     </div>
 </div>
-
-
 <footer th:replace="partials/footer :: footer"></footer>
 <th:block th:include="partials/scripts :: scripts"></th:block>
 </body>
