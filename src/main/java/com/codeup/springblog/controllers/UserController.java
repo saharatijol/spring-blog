@@ -21,7 +21,7 @@ public class UserController {
     }
     @GetMapping("/signup")
     public String showSignUpForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new User());git
         return "users/signup";
     }
 
@@ -33,9 +33,4 @@ public class UserController {
         return "redirect:/login";
     }
 
-//    // LOGIN - GET
-//    @GetMapping("/login")
-//    public String showLoginForm() {
-//        return "users/login";
-//    }
 }
