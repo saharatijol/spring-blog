@@ -32,12 +32,12 @@
                 <p class="card-text" th:text="${post.body}"></p>
 
                 <div class="d-flex">
-                    <form th:action="@{/posts/{id}/edit(id=${post.id})}" th:method="get">
+                    <form th:action="@{/posts/{id}/edit(id=${post.id})}" sec:authorize="isAuthenticated()" th:method="get">
                         <button class="btn btn-primary mb-2">Edit</button>
                     </form>
 
                 <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" th:attrappend="data-target=${post.id}">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" sec:authorize="isAuthenticated()" th:attrappend="data-target=${post.id}">
                         Delete
                     </button>
                 </div>
