@@ -19,6 +19,7 @@ public class UserController {
         this.usersDao = usersDao;
         this.passwordEncoder = passwordEncoder;
     }
+
     @GetMapping("/signup")
     public String showSignUpForm(Model model) {
         model.addAttribute("user", new User());

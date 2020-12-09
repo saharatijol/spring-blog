@@ -1,6 +1,10 @@
 package com.codeup.springblog.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.util.Date;
+import java .text.SimpleDateFormat;
 
 @Entity
 public class Post {
@@ -14,6 +18,9 @@ public class Post {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
+    @CreationTimestamp
+    private Date createdAt;
+
     @OneToOne
     private User owner;
 
@@ -22,11 +29,12 @@ public class Post {
     }
 
     // READ or EXTRACT
-    public Post (long id, String title, String body, User owner) {
+    public Post (long id, String title, String body, User owner, Date createdAt) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.owner = owner;
+        this.createdAt = createdAt;
     }
 
     // CREATE NEW
@@ -66,5 +74,13 @@ public class Post {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

@@ -29,6 +29,7 @@
             <div class="card-body">
                 <h3 class="card-title"><a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a></h3>
                 <p>author: <span th:text="${post.getOwner().getUsername()}"></span></p>
+                <p>created@<span th:text="${post.getCreatedAt()}"></span></p>
                 <p class="card-text" th:text="${post.body}"></p>
 
                 <div class="d-flex">

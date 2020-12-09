@@ -1,6 +1,9 @@
 package com.codeup.springblog.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -19,16 +22,20 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @CreationTimestamp
+    private Date memberSince;
+
     public User() {
 
     }
 
     // READ
-    public User(long id, String username, String email, String password) {
+    public User(long id, String username, String email, String password, Date memberSince) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.memberSince = memberSince;
     }
 
     // CREATE
@@ -76,5 +83,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getMemberSince() {
+        return memberSince;
+    }
+
+    public void setMemberSince(Date memberSince) {
+        this.memberSince = memberSince;
     }
 }

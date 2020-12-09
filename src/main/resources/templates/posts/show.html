@@ -20,6 +20,7 @@
         </div>
         <div class="card-footer text-muted">
             <p>Author: <span th:text="${post.getOwner().getUsername()}"></span></p>
+            <p>created@<span th:text="${post.getCreatedAt()}"></span></p>
         </div>
     </div>
     <!--    Tried to catch null but it doesn't seem to be render correctly-->

@@ -1,6 +1,7 @@
 package com.codeup.springblog.controllers;
 
 
+import com.codeup.springblog.models.User;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 
 import org.springframework.security.core.Authentication;
@@ -24,7 +25,7 @@ public class AuthenticationController {
             return "users/login";
 
             // redirect to /posts if logged in
-        } return String.format("redirect:%s", "/posts");
+        } return "redirect:/posts";
     }
 
 }
