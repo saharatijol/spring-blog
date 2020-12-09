@@ -10,7 +10,7 @@
     <h1>Registration form</h1>
 
 <!--    removed th from method-->
-    <form th:action="@{signup}" method="post" th:object="${user}">
+    <form th:action="@{/signup}" method="post" th:object="${user}">
         <div class="form-group mt-3">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" th:field="*{username}"/>
