@@ -13,8 +13,6 @@ public class HomeController {
         return "This is a landing page!";
     }
 
-    // Lecture Notes - View
-    // @ResponseBody is not used if using templating in this case(thymeleaf)
     @GetMapping("/home")
     public String welcome() {
         return "home";
