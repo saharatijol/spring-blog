@@ -15,13 +15,12 @@
     </div>
     <div class="form-group">
         <label th:field="*{body}">Body</label>
-        <textarea class="form-control" rows="4" th:field="*{body}"></textarea>
+        <textarea class="form-control" rows="10" th:field="*{body}"></textarea>
     </div>
     <input class="btn btn-primary" type="submit" value="Save Changes">
+    <button class="btn btn-danger" data-toggle="modal" data-target="#confirmation" type="button">Delete</button>
 </form>
-    <br>
 
-    <button class="btn btn-danger" data-toggle="modal" data-target="#confirmation">Delete</button>
     <div class="modal fade" id="confirmation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -35,9 +34,9 @@
                     Are you sure?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
                     <form th:action="@{/posts/{id}/delete(id=${post.getId()})}" th:method="post">
-                        <button class="btn btn-primary">Yes</button>
+                        <button class="btn btn-danger">Delete anyway</button>
                     </form>
                 </div>
             </div>
