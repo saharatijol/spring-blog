@@ -16,12 +16,12 @@
                 <a class="nav-link" href="/posts">View Posts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/posts/create">Create Post</a>
+                <a class="nav-link" href="/posts/create" sec:authorize="isAuthenticated()">Create Post</a>
             </li>
         </ul>
         <ul class="navbar-nav float-right">
             <li class="nav-item">
-                <a class="nav-link" href="/signup">Sign Up</a>
+                <a class="nav-link" href="/signup" sec:authorize="isAnonymous()">Sign Up</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/login" sec:authorize="isAnonymous()">Login</a>
@@ -31,7 +31,7 @@
 <!--                    <button class="btn-link btn">Logout</button>-->
 <!--                </form>-->
                 <form id="logout" th:method="post" th:action="@{/logout}"></form>
-                <a class="nav-link" onclick="document.getElementById('logout').submit();">Logout</a>
+                <a class="nav-link" onclick="document.getElementById('logout').submit();" sec:authorize="isAuthenticated()">Logout</a>
             </li>
         </ul>
     </div>
